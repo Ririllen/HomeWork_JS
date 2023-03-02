@@ -27,18 +27,12 @@ function transformToArab(s){
     let number = 0;
     let newArr = s.split("");
     
-    for (let i = 0; i < newArr.length; i++ ){
-        let currentNumber = checkValue(newArr[i]) ,
-            nextNumber    = checkValue(newArr[i+1]);
+    newArr.forEach((element,index,currentArray) => {    
+        let currentNumber = checkValue(element) ,
+            nextNumber    = checkValue(currentArray[index+1]);
 
-        if ( currentNumber < nextNumber){
-            number += (-1) * currentNumber;
-        } 
-        else 
-        {
-            number += currentNumber;
-        }
-    }
+        currentNumber < nextNumber ? number += (-1) * currentNumber : number += currentNumber;
+    });
     return number;
 }
 
